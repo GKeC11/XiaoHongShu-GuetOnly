@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">XiaoHongSong_GuetOnly</string>
+    <string name="app_id">com.guet.xiaohongsong_guetonly</string>
+    <string name="top_tab_explore">发现</string>
+    <string name="bottom_tab_home">首页</string>
+    <string name="bottom_tab_me">我</string>
+    <string name="hint_title">标题</string>
+    <string name="hint_content">正文</string>
+    <string name="text_post">发布图片</string>
+    <string name="text_username">用户名</string>
+    <string name="text_password">密码</string>
+    <string name="text_login">登 录</string>
+    <string name="text_register">注 册</string>
+    <string name="text_liked">赞过</string>
+</resources>
