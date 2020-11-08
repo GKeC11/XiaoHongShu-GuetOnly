@@ -12,6 +12,4 @@
 * 使用云服务器和Zimg作为图片服务器
 <br>
 应用演示：
-<div>
-![](https://github.com/GKeC11/XiaoHongShu-GuetOnly/blob/main/art/SVID_20201025_160648_1.gif)
-</div>
+<img src="https://github.com/GKeC11/XiaoHongShu-GuetOnly/blob/main/art/SVID_20201025_160648_1.gif" alt="" title="" width="640" height="860" />
