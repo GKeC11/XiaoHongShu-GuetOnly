@@ -10,4 +10,8 @@
 * 使用Bmob作为后端（数据库）
 * [x] **Zimg**
 * 使用云服务器和Zimg作为图片服务器
+<br>
+应用演示：
+<center>
 ![](https://github.com/GKeC11/XiaoHongShu-GuetOnly/blob/main/art/SVID_20201025_160648_1.gif)
+</center>
