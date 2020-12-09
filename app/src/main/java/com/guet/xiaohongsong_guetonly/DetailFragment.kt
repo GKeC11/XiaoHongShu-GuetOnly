@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cn.bmob.v3.BmobUser
@@ -36,6 +37,10 @@ class DetailFragment : Fragment() {
 
         binding?.tbDetail?.setNavigationOnClickListener {
             findNavController().popBackStack()
+        }
+        val list = StateUtil.userLikePostList
+        if(list!!.contains(bundle?.getLong("id"))){
+            binding?.tbDetail?.menu?.getItem(0)?.setIcon(R.drawable.ic_like)
         }
         binding?.tvTitle?.text = bundle?.getString("title")
         binding?.tvDesc?.text = bundle?.getString("desc")

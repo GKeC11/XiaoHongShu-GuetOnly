@@ -27,6 +27,7 @@ class HomePostItem(context: Context) : BaseItem {
             bundle.putString("title", postBean.title)
             bundle.putString("desc", postBean.desc)
             bundle.putString("user", postBean.userName)
+            bundle.putLong("id", postBean.id!!)
 
             EventBus.getDefault().post(DetailEvent(bundle))
         }
@@ -49,8 +50,14 @@ class HomePostItem(context: Context) : BaseItem {
                     PostHelper.getUserLikePostId()
                     if (isLike) {
                         Glide.with(context).load(R.drawable.ic_like).into(view.iv_like)
+                        postBean.likeNum = postBean.likeNum!! + 1
+                        view.tv_like_num.text = (postBean.likeNum).toString()
                     } else {
                         Glide.with(context).load(R.drawable.ic_unlike).into(view.iv_like)
+                        if(postBean.likeNum!! > 0){
+                            postBean.likeNum = postBean.likeNum!! - 1
+                        }
+                        view.tv_like_num.text = (postBean.likeNum).toString()
                     }
                 }
             })

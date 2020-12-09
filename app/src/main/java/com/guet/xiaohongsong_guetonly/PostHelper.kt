@@ -119,6 +119,10 @@ class PostHelper {
                 isLike = false
             }
 
+            // 更新帖子状态
+            updatePost(postId, isLike)
+
+            // 严格来说 应该确认用户数据和帖子数据的更新是否都成功，功能耗时较长置后
             user.update(StateUtil.user?.objectId, object : UpdateListener(){
                 override fun done(e: BmobException?) {
                     if (e==null) {
@@ -130,6 +134,40 @@ class PostHelper {
                 }
             })
         }
+
+        /* 严格来讲帖子数据的更新不应放在客户端
+         * 但是Bmob仅仅是云数据库而已
+         * 所以更新服务器中帖子数据的逻辑写在客户端 */
+        fun updatePost(postId: Long, isLike: Boolean){
+            var postQuery = BmobQuery<Post>()
+            postQuery.addWhereEqualTo("id", postId)
+            postQuery.findObjects(object : FindListener<Post>(){
+                override fun done(posts: MutableList<Post>?, e: BmobException?) {
+                    if(e == null)
+                    {
+                        /* 更新数据 */
+                        var post = posts?.get(0)
+                        if(isLike){
+                            post!!.likeNum = post?.likeNum!! + 1
+                        } else if(post?.likeNum != 0L){
+                            post!!.likeNum = post?.likeNum!! - 1
+                        }
+
+                        post?.update(post.objectId, object : UpdateListener(){
+                            override fun done(e: BmobException?) {
+                                if(e == null)
+                                {
+                                    Log.d("PostHelper", "Post Update Success")
+                                }
+                            }
+
+                        })
+                    }
+
+                }
+            })
+        }
+
     }
 
 }
